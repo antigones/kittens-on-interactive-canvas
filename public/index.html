@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+  <meta charset="UTF-8" />
+  <title>Kittens on Canvas!</title>
+	
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
+  <!-- Disable favicon requests -->
+  <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;,">
+
+  <!-- Load Assistant Interactive Canvas API -->
+  <script type="text/javascript"
+    src="https://www.gstatic.com/assistant/interactivecanvas/api/interactive_canvas.min.js"></script>
+
+  <style type="text/css">
+			body {
+				font-family: 'Cabin', cursive;
+				background-color: #ffccd1;
+				height: 100%;
+			}
+			
+			h1 {
+				font-family: 'Lobster', cursive;
+			}
+			
+			html, body, #container {
+				height: 100%;
+				
+			}
+			
+			#container {
+				display: -webkit-flexbox;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				justify-content: center;
+			}
+		
+			h1 {
+				font-size: 35px;
+			}
+			
+			.fadein, .fadeout {
+				opacity: 0;
+				transition: opacity 1s;
+			}
+			
+			.fadein {
+				opacity: 1;
+			}
+  </style>
+  <script>
+		function nextStory() {
+			this.action.commands.NEXT();
+		}
+		
+		function previousStory() {
+			this.action.commands.PREVIOUS();
+		}
+		
+		document.addEventListener("keydown", function onPress(event) {
+			if (event.keyCode  == '37') {
+				// left arrow
+				previousStory();
+			}
+			else if (event.keyCode == '39') {
+			   // right arrow
+			   nextStory();
+			}
+		});
+		
+		
+	</script>
+</head>
+
+<body>
+	<div id="container">
+	<div id="splash">
+		<h1>Interactive Canvas Kittens!</h1>
+	</div>
+	</div>
+  <script type="text/javascript" src="./action.js"></script>
+  <script type="text/javascript" src="./main.js"></script>
+</body>
+</html>
