@@ -35,7 +35,7 @@ class Action {
   }
 
   stand() {
-    fade(img, "img/cat_standing.png");
+    fade(this.imgContext, "img/cat_standing.png");
   }
 
 }
