@@ -51,13 +51,14 @@
 				font-size: 35px;
 			}
 			
-			.fadein, .fadeout {
+			.fadeout {
 				opacity: 0;
 				transition: opacity 1s;
 			}
 			
 			.fadein {
 				opacity: 1;
+				transition: opacity 1s;
 			}
 			
 			#menu {
@@ -72,68 +73,88 @@
 				justify-content: center;
 			}
   </style>
-  <script>
-		function sleep (time) {
-			return new Promise((resolve) => setTimeout(resolve, time));
-		}
   
-		function fade(object_fo, object_fin) {
-			var e = object_fo;
-			e.className = "fadeout";
-			
-			sleep(500).then(() => {
-				e = object_fin;
-				e.className = "fadein";
-			});
-		}
-		
-		function nextStory() {
-			this.action.commands.NEXT();
-		}
-		
-		function previousStory() {
-			this.action.commands.PREVIOUS();
-		}
-		
-		function play() {
-		
-		}
-		
-		document.addEventListener("keydown", function onPress(event) {
-			if (event.keyCode  == '37') {
-				// left arrow
-				previousStory();
-			}
-			else if (event.keyCode == '39') {
-			   // right arrow
-			   nextStory();
-			}
-			else if (event.keyCode == '13') {
-			   // right arrow
-			   play();
-			}
-		});
-		
-		
-	</script>
 </head>
 
 <body>
 	<div id="container">
 	<div id="splash">
 		<h1>Interactive Canvas Kittens!</h1>
-		<img src="img/cat_standing.png" />
+		<img id="cat_image" src="img/cat_standing.png" />
 	</div>
 	</div>
-	<div id="menu">
+	<!--<div id="menu">
 		<div class="menu_item">
 			<img src="img/bowl.png" />
 		</div>
 		<div class="menu_item">
 			<img src="img/play.png" />
 		</div>
-	</div>
+	</div>-->
+  <script>
+		function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+  
+		function fade(object, src) {
+			var e = object;
+			e.className = "fadeout";
+			
+			sleep(500).then(() => {
+				e.src = src;
+				e.className = "fadein";
+			});
+		}
+		
+		var img = document.getElementById("cat_image");
+		
+		function eat() {
+			//this.action.commands.NEXT();		
+			fade(img, "img/cat_eating.png");
+			
+		}
+		
+		function stand() {
+			fade(img, "img/cat_standing.png");
+		}
+		
+		function cheer() {
+			fade(img, "img/cat_cheer.png");
+		}
+		
+		function roll() {
+			fade(img, "img/cat_roll.png");
+		}
+
+		
+		document.addEventListener("keydown", function onPress(event) {
+			if (event.keyCode  == '37') {
+				// left arrow
+				stand();
+			}
+			else if (event.keyCode == '38') {
+			   // right up
+			   eat();
+			}
+			else if (event.keyCode == '39') {
+			   // right arrow
+			   cheer();
+			}
+			else if (event.keyCode == '40') {
+			   // down arrow
+			   roll();
+			}
+			else if (event.keyCode == '13') {
+			// enter
+			   cheer();
+				
+			}
+		});
+		
+		
+	</script>
   <script type="text/javascript" src="./action.js"></script>
   <script type="text/javascript" src="./main.js"></script>
+  
 </body>
 </html>
