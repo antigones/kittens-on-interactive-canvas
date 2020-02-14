@@ -2,86 +2,89 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-  <meta charset="UTF-8" />
-  <title>Kittens on Canvas!</title>
-	
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+	<meta charset="UTF-8" />
+	<title>Kittens on Canvas!</title>
 
-  <!-- Disable favicon requests -->
-  <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;,">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.22.0/phaser.min.js"></script>
-  <!-- Load Assistant Interactive Canvas API -->
-  <script type="text/javascript" src="https://www.gstatic.com/assistant/interactivecanvas/api/interactive_canvas.min.js"></script>
+	<!-- Disable favicon requests -->
+	<link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;,">
 
-  <style type="text/css">
-			body {
-				font-family: 'Cabin', cursive;
-				background-color: #ffccd1;
-				height: 100%;
-				margin: 0;
-			}
-			
-			h1 {
-				font-family: 'Lobster', cursive;
-				text-align: center;
-			}
-			
-			html, body, #container {
-				height: 100%;
-				
-			}
-			
-			#container {
-				display: -webkit-flexbox;
-				display: -ms-flexbox;
-				display: -webkit-flex;
-				display: flex;
-				-webkit-flex-align: center;
-				-ms-flex-align: center;
-				-webkit-align-items: center;
-				align-items: center;
-				justify-content: center;
-			}
-			
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.22.0/phaser.min.js"></script>
+	<!-- Load Assistant Interactive Canvas API -->
+	<script type="text/javascript"
+		src="https://www.gstatic.com/assistant/interactivecanvas/api/interactive_canvas.min.js"></script>
 
-			h1 {
-				font-size: 35px;
-			}
-			
-			.fadeout {
-				opacity: 0;
-				transition: opacity 1s;
-			}
-			
-			.fadein {
-				opacity: 1;
-				transition: opacity 1s;
-			}
-			
-			#menu {
-				display: -webkit-flexbox;
-				display: -ms-flexbox;
-				display: -webkit-flex;
-				display: flex;
-				-webkit-flex-align: center;
-				-ms-flex-align: center;
-				-webkit-align-items: center;
-				align-items: center;
-				justify-content: center;
-			}
-  </style>
-  
+	<style type="text/css">
+		body {
+			font-family: 'Cabin', cursive;
+			background-color: #ffccd1;
+			height: 100%;
+			margin: 0;
+		}
+
+		h1 {
+			font-family: 'Lobster', cursive;
+			text-align: center;
+		}
+
+		html,
+		body,
+		#container {
+			height: 100%;
+
+		}
+
+		#container {
+			display: -webkit-flexbox;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			justify-content: center;
+		}
+
+
+		h1 {
+			font-size: 35px;
+		}
+
+		.fadeout {
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.fadein {
+			opacity: 1;
+			transition: opacity 1s;
+		}
+
+		#menu {
+			display: -webkit-flexbox;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			justify-content: center;
+		}
+	</style>
+
 </head>
 
 <body>
 	<div id="container">
-	<div id="splash">
-		<h1>Interactive Canvas Kittens!</h1>
-		<img id="cat_image" src="img/cat_standing.png" />
-	</div>
+		<div id="splash">
+			<h1>Interactive Canvas Kittens!</h1>
+			<img id="cat_image" src="img/cat_standing.png" />
+		</div>
 	</div>
 	<!--<div id="menu">
 		<div class="menu_item">
@@ -91,70 +94,71 @@
 			<img src="img/play.png" />
 		</div>
 	</div>-->
-  <script>
-		function sleep (time) {
+	<script>
+		function sleep(time) {
 			return new Promise((resolve) => setTimeout(resolve, time));
 		}
-  
+
 		function fade(object, src) {
 			var e = object;
 			e.className = "fadeout";
-			
+
 			sleep(500).then(() => {
 				e.src = src;
 				e.className = "fadein";
 			});
 		}
-		
+
 		var img = document.getElementById("cat_image");
-		
+
 		function eat() {
 			//this.action.commands.NEXT();		
 			fade(img, "img/cat_eating.png");
-			
+
 		}
-		
+
 		function stand() {
 			fade(img, "img/cat_standing.png");
 		}
-		
+
 		function cheer() {
 			fade(img, "img/cat_cheer.png");
 		}
-		
+
 		function roll() {
 			fade(img, "img/cat_roll.png");
 		}
 
-		
+
 		document.addEventListener("keydown", function onPress(event) {
-			if (event.keyCode  == '37') {
+			if (event.keyCode == '37') {
 				// left arrow
 				stand();
 			}
 			else if (event.keyCode == '38') {
-			   // right up
-			   eat();
+				// right up
+				eat();
 			}
 			else if (event.keyCode == '39') {
-			   // right arrow
-			   cheer();
+				// right arrow
+				cheer();
 			}
 			else if (event.keyCode == '40') {
-			   // down arrow
-			   roll();
+				// down arrow
+				roll();
 			}
 			else if (event.keyCode == '13') {
-			   // enter
-			   cheer();
-				
+				// enter
+				cheer();
+
 			}
 		});
-		
-		
+
+
 	</script>
-  <script type="text/javascript" src="./action.js"></script>
-  <script type="text/javascript" src="./main.js"></script>
-  
+	<script type="text/javascript" src="./action.js"></script>
+	<script type="text/javascript" src="./main.js"></script>
+
 </body>
+
 </html>

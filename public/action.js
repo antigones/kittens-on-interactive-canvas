@@ -1,14 +1,14 @@
 class Action {
 
-  constructor(graphContext) {
+  constructor(imgContext) {
     this.canvas = window.interactiveCanvas;
-	const that = this;
-	this.graphContext = graphContext;
+    const that = this;
+    this.imgContext = imgContext;
     this.commands = {
-	  PLAY: function(data) {
-        that.play();
+      STAND: function () {
+        that.stand();
       },
-      DEFAULT: function() {
+      DEFAULT: function () {
         // do nothing, when no command is found
       },
     };
@@ -33,9 +33,9 @@ class Action {
 
     this.canvas.ready(callbacks);
   }
-  
-  play() {		
-	this.canvas.sendTextQuery(`Begin play`);
+
+  stand() {
+    fade(img, "img/cat_standing.png");
   }
-  
+
 }
