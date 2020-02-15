@@ -3,6 +3,7 @@ class Action {
   constructor(imgContext) {
     this.canvas = window.interactiveCanvas;
     const that = this;
+    this.imgContext = imgContext;
     this.commands = {
       STAND: function () {
         that.stand();
@@ -40,7 +41,7 @@ class Action {
   fade(object, src) {
     var e = object;
     e.className = "fadeout";
-
+	console.log(e);
     sleep(500).then(() => {
       e.src = src;
       e.className = "fadein";
