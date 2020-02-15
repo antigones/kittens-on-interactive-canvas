@@ -3,7 +3,6 @@ class Action {
   constructor(imgContext) {
     this.canvas = window.interactiveCanvas;
     const that = this;
-    this.imgContext = imgContext;
     this.commands = {
       STAND: function () {
         that.stand();
