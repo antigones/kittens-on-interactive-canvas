@@ -34,11 +34,11 @@ class Action {
     this.canvas.ready(callbacks);
   }
   
-  function sleep(time) {
+  sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
 
-  function fade(object, src) {
+  fade(object, src) {
     var e = object;
     e.className = "fadeout";
 
