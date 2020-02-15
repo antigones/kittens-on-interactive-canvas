@@ -50,7 +50,7 @@ class Action {
 
   stand() {
 	console.log('stand function');
-    this.fade(this.imgContext, "img/cat_standing.png");
+    fade(that.imgContext, "img/cat_standing.png");
   }
 
 }
