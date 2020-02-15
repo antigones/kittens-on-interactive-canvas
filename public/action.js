@@ -33,6 +33,20 @@ class Action {
 
     this.canvas.ready(callbacks);
   }
+  
+  function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+
+  function fade(object, src) {
+    var e = object;
+    e.className = "fadeout";
+
+    sleep(500).then(() => {
+      e.src = src;
+      e.className = "fadein";
+    });
+  }
 
   stand() {
 	console.log('stand function');
