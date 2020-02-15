@@ -8,6 +8,15 @@ class Action {
       STAND: function () {
         that.stand();
       },
+	  CHEER: function () {
+        that.cheer();
+      },
+	  EAT: function () {
+        that.eat();
+      },
+	  ROLL: function () {
+        that.roll();
+      },
       DEFAULT: function () {
         // do nothing, when no command is found
       },
@@ -51,6 +60,22 @@ class Action {
   stand() {
 	console.log('stand function');
     fade(this.context.imgContext, "img/cat_standing.png");
+  }
+  
+  eat() {
+	fade(this.context.imgContext, "img/cat_eating.png");
+  }
+
+  stand() {
+    fade(this.context.imgContext, "img/cat_standing.png");
+  }
+
+  cheer() {
+    fade(this.context.imgContext, "img/cat_cheer.png");
+  }
+
+  roll() {
+    fade(this.context.imgContext, "img/cat_roll.png");
   }
 
 }
