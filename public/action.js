@@ -1,9 +1,9 @@
 class Action {
 
-  constructor(imgContext) {
+  constructor(context) {
     this.canvas = window.interactiveCanvas;
     const that = this;
-    this.imgContext = imgContext;
+    this.context = context;
     this.commands = {
       STAND: function () {
         that.stand();
@@ -50,7 +50,7 @@ class Action {
 
   stand() {
 	console.log('stand function');
-    fade(that.imgContext, "img/cat_standing.png");
+    fade(this.context.imgContext, "img/cat_standing.png");
   }
 
 }
